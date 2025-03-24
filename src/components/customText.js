@@ -1,6 +1,6 @@
 import { Mesh, MeshStandardMaterial } from '../../build/three.module.js';
-import { FontLoader } from '../../build/FontLoader';
-import { TextGeometry } from '../../build/TextGeometry';
+import { FontLoader } from '../../build/FontLoader.js';
+import { TextGeometry } from '../../build/TextGeometry.js';
 
 
 async function loadFont() {

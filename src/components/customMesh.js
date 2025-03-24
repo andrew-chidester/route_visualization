@@ -1,4 +1,4 @@
-import { GLTFLoader } from '../../build/GLTFLoader';
+import { GLTFLoader } from '../../build/GLTFLoader.js';
 
 
 async function loadModel(file) {
