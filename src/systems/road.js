@@ -60,7 +60,7 @@ function createRoad(detail, { sx, sy, sz }, {ex, ey, ez }) {
 
     // Create a material
     //const material = new LineBasicMaterial({ color: 0xff0000 });
-    const material = new MeshStandardMaterial({ color: "red", side: DoubleSide});
+    const material = new MeshStandardMaterial({ color: "black", side: DoubleSide});
 
     // Create the line object
     const line = new Line(geometry, material);
