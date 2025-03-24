@@ -1,5 +1,4 @@
 import * as THREE from './build/three.module.js';
-import * as ORBIT from './build/OrbitControls.js';
 import * as GLTF from './build/GLTFLoader.js';
 import * as TEXT from './build/TextGeometry.js';
 import * as FONT from './build/FontLoader.js';
