@@ -27,7 +27,7 @@ const container = document.querySelector('#scene-container');
 
 const world = new World(container);
 
-//world.init();
+world.init();
 world.start();
 
 

@@ -20,17 +20,17 @@ function createRoad(detail, { sx, sy, sz }, {ex, ey, ez }) {
     const indices = [];
     //const indices = [0,1,2,2,3,1];
     for (let i = 0.0; i <= detail; i += 1) {
-        console.log(i);
+        //console.log(i);
         const midpoint = curve.getPoint(i / detail);
         
         const tangent = curve.getTangent(i / detail);
         const normal = new Vector3().crossVectors(tangent, up).normalize();
 
         const point1 = midpoint.clone().add(normal);
-        console.log(point1);
+        //console.log(point1);
         
         const point2 = midpoint.clone().sub(normal);
-        console.log(point2);
+        //console.log(point2);
         
         vertices[i * 6] = point1.x;
         vertices[i * 6 + 1] = point1.y;
@@ -46,7 +46,7 @@ function createRoad(detail, { sx, sy, sz }, {ex, ey, ez }) {
 
         
 
-        console.log(vertices);
+        //console.log(vertices);
 
     }
 
@@ -56,7 +56,7 @@ function createRoad(detail, { sx, sy, sz }, {ex, ey, ez }) {
     geometry.setIndex(indices);
     geometry.setAttribute('position', new BufferAttribute(vertices, 3));
 
-    console.log(geometry);
+    //console.log(geometry);
 
     // Create a material
     //const material = new LineBasicMaterial({ color: 0xff0000 });
@@ -70,7 +70,7 @@ function createRoad(detail, { sx, sy, sz }, {ex, ey, ez }) {
     /*cube.tick = (delta) => {
     }*/
 
-    console.log(curve);
+    //console.log(curve);
     return { mesh, curve };
 ;
 }
