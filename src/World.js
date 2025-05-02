@@ -88,9 +88,9 @@ class World {
         followPath(cube, paths);
         loop.updateables.push(cube);
 
-        //followObject(camera, cube, 0, 150, 50);
-        followObject(camera, cube, 0, 2, 15);
-        loop.updateables.push(camera);
+        followObject(camera, cube, 0, 150, 50);
+        //followObject(camera, cube, 0, 2, 15);
+        //loop.updateables.push(camera);
 
         
         const { sunLight, ambientLight } = createLights();
