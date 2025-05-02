@@ -1,14 +1,15 @@
 import { Quaternion, Vector3 } from '../../build/three.module.js';
 
 
-function followPath(mesh, path) {
+function followPath(mesh, paths) {
 
     let distanceTraveled = 0.0;
+    let currentPath = 0;
 
     mesh.tick = (delta) => {
         if (distanceTraveled < 1.0) {
-            const midpoint = path.getPoint(distanceTraveled);
-            const tangent = path.getTangent(distanceTraveled).normalize();
+            const midpoint = paths[currentPath].getPoint(distanceTraveled);
+            const tangent = paths[currentPath].getTangent(distanceTraveled).normalize();
 
 
             const forward = new Vector3(0, 0, 1);
@@ -22,6 +23,11 @@ function followPath(mesh, path) {
             mesh.quaternion.copy(quat);
             //mesh.lookAt(tangent);
             distanceTraveled += 0.0025;
+        }
+        else if (currentPath < paths.length)
+        {
+            distanceTraveled = 0;
+            currentPath +=1
         }
     }
 

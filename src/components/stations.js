@@ -1,17 +1,24 @@
-import { Group } from '../../build/three.module.js';
+import { Group, MeshBasicMaterial } from '../../build/three.module.js';
 
-function createPath(mesh) {
+function createPath(mesh, stations, route) {
 
-    const stations = new Group();
-    stations.add(mesh);
+    const stationMesh = new Group();
+    stationMesh.add(mesh);
 
     for (let i = 0; i < 10; i++) {
         const clonedStation = mesh.clone();
-        clonedStation.position.z = i * -33.5;
-        stations.add(clonedStation);
+        clonedStation.position.z = stations[i].x;
+        clonedStation.position.x = stations[i].y;
+
+        if (route.includes(i)) {
+            clonedStation.children[0].material = new MeshBasicMaterial({ color: "red" });
+            clonedStation.position.y += 0.05;
+        }
+
+        stationMesh.add(clonedStation);
     }
 
-    return stations;
+    return stationMesh;
 }
 
 export { createPath };
