@@ -67,19 +67,22 @@ class World {
                 const { mesh: road, curve: path } = createRoad(30, { sx: sx, sy: 0, sz: sz }, { ex: ex, ey: 0, ez: ez });
                 //console.log([+station, e]);
 
-                
-                if (route.some(routeEdge => (routeEdge[0] == +station && routeEdge[1] == e) || (routeEdge[0] == e && routeEdge[1] == +station))) {
-                    road.material = new MeshBasicMaterial({ color: "red", side: DoubleSide });
-                    road.position.y += 0.05
-                    console.log(road);
-                    paths.push(path);
-                   
-                }
-
                 roads.add(road);
             }
         }
 
+        for (const e of route) {
+            const sx = stations[e[0]].y;
+            const sz = stations[e[0]].x;
+            const ex = stations[e[1]].y;
+            const ez = stations[e[1]].x;
+            const { mesh: road, curve: path } = createRoad(30, { sx: sx, sy: 0, sz: sz }, { ex: ex, ey: 0, ez: ez });
+            road.material = new MeshBasicMaterial({ color: "red", side: DoubleSide });
+            road.position.y += 0.05
+            paths.push(path);
+
+            roads.add(road);
+        }
         
 
         followPath(cube, paths);
@@ -114,12 +117,13 @@ class World {
 
         const font = await loadFont();
 
-        const text = createText('Cost: ', font, .75, .1, 'white');
+        //const text = createText('Cost: ', font, .75, .1, 'white');
 
-        followObject(text, scene.children[0], -10, -2, 0);
-        loop.updateables.push(text);
+        //followObject(text, scene.children[0], -10, -2, 0);
+        //loop.updateables.push(text);
+        //scene.add(text);
 
-        scene.add(stationMeshes, text);
+        scene.add(stationMeshes);
     }
     render() {
         renderer.render(scene, camera);

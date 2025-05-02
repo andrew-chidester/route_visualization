@@ -15,8 +15,11 @@ function followObject(follower, target, xOffset, yOffset, zOffset) {
         followVector.applyAxisAngle(new Vector3(0, 1, 0), -target.rotation.y);
         follower.position.copy(startingPosition).add(followVector);
         follower.rotation.y = -target.rotation.y;
+
+        console.log(followVector);
         
     }
+    
 }
 
 export { followObject };

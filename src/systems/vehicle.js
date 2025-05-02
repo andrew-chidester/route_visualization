@@ -24,6 +24,11 @@ function followPath(mesh, paths) {
             //mesh.lookAt(tangent);
             distanceTraveled += 0.0025;
         }
+        else if (currentPath < paths.length)
+        {
+            distanceTraveled = 0;
+            currentPath +=1
+        }
     }
 
     return;
